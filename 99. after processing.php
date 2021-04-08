@@ -19,20 +19,23 @@ session_start();
 $kanri_flg = "";
 $life_flg = "";
 
-switch ($_SESSION['life_flg']){
-    case 0:
-        $life_flg = "管理者";
-    case 1:
-        $life_flg = "スーパー管理者";
-}
-
 switch ($_SESSION['kanri_flg']){
     case 0:
-        $kanri_flg = "退社";
+        $kanri_flg = "管理者";
+        break;
     case 1:
-        $kanri_flg = "入社";
+        $kanri_flg = "スーパー管理者";
+        break;
     }
 
+switch ($_SESSION['life_flg']){
+    case 0:
+        $life_flg = "退社";
+        break;
+    case 1:
+        $life_flg = "入社";
+        break;
+}
 
 ?>
 
@@ -62,7 +65,7 @@ switch ($_SESSION['kanri_flg']){
     </table>
    
 <div class="btn-wrapper">
-    <button class="btn topBtn" onclick="location.href='00. toppage.php'">トップページへ戻る</button>
+    <button class="btn topBtn" onclick="location.href='index.php'">トップページへ戻る</button>
 </div>
  
 </body>

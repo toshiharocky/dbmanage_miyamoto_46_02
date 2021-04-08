@@ -74,7 +74,7 @@ if ($status == false) {
 
 <div class="btn-wrapper">
     <button class="btn" onclick="location.href='04-2. delete_exe.php'">削除</button>
-    <button class="btn topBtn" onclick="location.href='00. toppage.php'">トップページへ戻る</button>
+    <button class="btn topBtn" onclick="location.href='index.php'">トップページへ戻る</button>
 </div>
 
 </body>

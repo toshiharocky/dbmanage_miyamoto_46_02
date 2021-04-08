@@ -65,7 +65,7 @@ switch ($_SESSION['kanri_flg']){
     </table>
    
 <div class="btn-wrapper">
-    <button class="btn topBtn" onclick="location.href='00. toppage.php'">トップページへ戻る</button>
+    <button class="btn topBtn" onclick="location.href='index.php'">トップページへ戻る</button>
 </div>
  
 </body>

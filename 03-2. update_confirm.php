@@ -25,6 +25,19 @@ $_SESSION['lpw'] = $_POST['lpw'];
 $_SESSION['lid'] = $_POST['lid'];
 $_SESSION['kanri_flg'] = $_POST['kanri_flg'];
 $_SESSION['life_flg'] = $_POST['life_flg'];
+
+if($_SESSION['kanri_flg']==0){
+    $kanri_flg = "管理者";
+}else {
+    $kanri_flg = "スーパー管理者";
+}
+
+if($_SESSION['life_flg']==0){
+    $life_flg = "退社";
+} else {
+    $life_flg = "入社";
+}
+
 ?>
 
 <h1>ユーザー情報更新</h1>
@@ -44,11 +57,11 @@ $_SESSION['life_flg'] = $_POST['life_flg'];
         </tr>
         <tr>
             <td class='table_left'>管理権限</td>
-            <td name='kanri_flg'><?=h($_SESSION['kanri_flg'])?></td>
+            <td name='kanri_flg'><?=h($kanri_flg)?></td>
         </tr>
         <tr>
             <td class='table_left'>ステータス</td>
-            <td name='life_flg'><?=h($_SESSION['life_flg'])?></td>
+            <td name='life_flg'><?=h($life_flg)?></td>
         </tr>
     </table>
     <input type="submit" value="更新を確定" id="submit">
@@ -56,7 +69,7 @@ $_SESSION['life_flg'] = $_POST['life_flg'];
 
 <div class="btn-wrapper">
     <button class="btn backBtn" onclick="location.href='javascript:history.back()'">前のページへ戻る</button><br>
-    <button class="btn topBtn" onclick="location.href='00. toppage.php'">トップページへ戻る</button>
+    <button class="btn topBtn" onclick="location.href='index.php'">トップページへ戻る</button>
 </div>
     
 </body>

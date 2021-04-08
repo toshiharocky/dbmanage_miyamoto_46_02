@@ -11,8 +11,8 @@ $lid = $_SESSION['lid'];
 $kanri_flg = $_SESSION['kanri_flg'];
 $life_flg = $_SESSION['life_flg'];
 
-echo $name;
 echo $id;
+echo $name;
 echo $lpw;
 echo $lid;
 echo $kanri_flg;
@@ -23,7 +23,7 @@ $pdo = db_conn();
 
 // SQL
 $stmt = $pdo->prepare(
-    "UPDATE gs_user_table
+    "UPDATE gs_user_table 
     SET 
         name=:name,
         lid=:lid,
@@ -31,17 +31,17 @@ $stmt = $pdo->prepare(
         kanri_flg=:kanri_flg,
         life_flg=:life_flg
     WHERE
-        id=:id
-    ");
+        id=:id"
+    );
 
 // 数値の場合 PDO::PARAM_INT
 // 文字の場合 PDO::PARAM_STR
-$stmt->bindValue(':name', $_SESSION['name'], PDO::PARAM_STR);
+$stmt->bindValue(':name', $name, PDO::PARAM_STR);
 $stmt->bindValue(':lid', $lid, PDO::PARAM_STR);
 $stmt->bindValue(':lpw', $lpw, PDO::PARAM_STR);
 $stmt->bindValue(':kanri_flg', $kanri_flg, PDO::PARAM_INT);
 $stmt->bindValue(':life_flg', $life_flg, PDO::PARAM_INT);
-$stmt->bindValue(':id', $id, PDO::PARAM_STR);
+$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 $status = $stmt->execute(); //実行
 
 
@@ -51,7 +51,8 @@ if ($status == false) {
     sql_error($stmt);
     // $error = $stmt->errorInfo();
     // exit("SQLError:" . print_r($error, true));
-} else {
+} 
+else {
     //*** function化する！*****************
     redirect('99. after processing.php');
 }

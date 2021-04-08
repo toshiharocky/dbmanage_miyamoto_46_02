@@ -52,16 +52,59 @@ if ($status == false) {
             <td class='table_left'>ログインパスワード</td>
             <td><input type='text' name='lpw' value='$result[lpw]'></td>
         </tr>
-        <tr>
-            <td class='table_left'>管理権限</td>
-            <td><input type='text' name='kanri_flg' value='$result[kanri_flg]'></td>
-        </tr>
-        <tr>
-            <td class='table_left'>ステータス</td>
-            <td><input type='text' name='life_flg' value='$result[life_flg]'></td>
-        </tr>
-        <input type='hidden' name='lpw' value='$result[lpw]'>
+        <input type='hidden' name='id' value='$result[id]'>
         ";
+
+
+        if($result[kanri_flg]==0){
+            $kanri_flg .= 
+            "<tr>
+                <td class='table_left'>管理権限</td>
+                <td>
+                    <select name='kanri_flg' id='kanri_flg'>
+                        <option value='0' selected>管理者</option>
+                        <option value='1'>スーパー管理者</option>
+                    </select>
+                </td>
+            </tr>
+            ";
+        } else {
+            $kanri_flg .= 
+            "<tr>
+                <td class='table_left'>管理権限</td>
+                <td>
+                    <select name='kanri_flg' id='kanri_flg'>
+                        <option value='0'>管理者</option>
+                        <option value='1' selected>スーパー管理者</option>
+                    </select>
+                </td>
+            </tr>
+            ";
+        }
+
+        if($result[life_flg]==0){
+            $life_flg = "
+                <tr>
+                    <td class='table_left'>ステータス</td>
+                    <td>
+                        <select name='life_flg' id='life_flg'>
+                            <option value='0' selected>退社</option>
+                            <option value='1'>入社</option>
+                        </select>
+                    </td>
+                </tr>";
+        } else{
+            $life_flg = "
+                <tr>
+                    <td class='table_left'>ステータス</td>
+                    <td>
+                        <select name='life_flg' id='life_flg'>
+                            <option value='0'>退社</option>
+                            <option value='1' selected>入社</option>
+                        </select>
+                    </td>
+                </tr>";
+        }
     }
 
 }
@@ -70,13 +113,15 @@ if ($status == false) {
 <h1>ユーザー情報更新</h1>
 <form action="03-2. update_confirm.php" method="POST">
     <table>
-            <?=$table?>
+        <?=$table?>
+        <?=$kanri_flg?>
+        <?=$life_flg?>
     </table>
     <input type="submit" value="更新内容確認" id="submit">
 </form>
 
 <div class="btn-wrapper">
-    <button class="btn topBtn" onclick="location.href='00. toppage.php'">トップページへ戻る</button>
+    <button class="btn topBtn" onclick="location.href='index.php'">トップページへ戻る</button>
 </div>
     
 </body>

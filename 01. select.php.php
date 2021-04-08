@@ -40,14 +40,32 @@ if ($status == false) {
     //Selectデータの数だけ自動でループしてくれる
     //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
     while( $result = $stmt->fetch(PDO::FETCH_ASSOC)){
+        switch ($result[kanri_flg]){
+            case 0:
+                $kanri_flg = "管理者";
+                break;
+            case 1:
+                $kanri_flg = "スーパー管理者";
+                break;
+            }
+        
+        switch ($result[life_flg]){
+            case 0:
+                $life_flg = "退社";
+                break;
+            case 1:
+                $life_flg = "入社";
+                break;
+        }
+
         $table .= 
         "
         <tr>
             <td>$result[name]</td>
             <td>$result[lid]</td>
             <td>$result[lpw]</td>
-            <td>$result[kanri_flg]</td>
-            <td>$result[life_flg]</td>
+            <td>$kanri_flg</td>
+            <td>$life_flg</td>
             <td><a href='03-1. update_input.php?id=$result[id]'>更新</td>
             <td><a href='04-1. delete_confirm.php?id=$result[id]'>削除</td>
         </tr>
@@ -72,7 +90,7 @@ if ($status == false) {
     
 </table>
 <div class="btn-wrapper">
-    <button class="btn topBtn" onclick="location.href='00. toppage.php'">トップページへ戻る</button>
+    <button class="btn topBtn" onclick="location.href='index.php'">トップページへ戻る</button>
 </div>
     
 </body>
