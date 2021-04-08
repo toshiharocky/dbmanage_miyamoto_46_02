@@ -31,18 +31,18 @@ $_SESSION['life_flg'] = $_POST['life_flg'];
 $kanri_flg = "";
 $life_flg = "";
 
-switch ($_SESSION['life_flg']){
-    case 0:
-        $life_flg = "管理者";
-    case 1:
-        $life_flg = "スーパー管理者";
-}
-
 switch ($_SESSION['kanri_flg']){
     case 0:
-        $kanri_flg = "退社";
+        $kanri_flg = "管理者";
     case 1:
-        $kanri_flg = "入社";
+        $kanri_flg = "スーパー管理者";
+}
+
+switch ($_SESSION['life_flg']){
+    case 0:
+        $life_flg = "退社";
+    case 1:
+        $life_flg = "入社";
 }
 
 
